@@ -11,17 +11,9 @@ function getMeals() {
     .then((response) => response.json())
     .then((meals) => {
       meals.data.forEach((meal) => {
-        const mealMarkup = ` <div data-id=${meal.id}>
-        <img src=${meal.attributes.image_url} height="200" width ="250">
-        <h3>Name: ${meal.attributes.name}</h3>
-        <p>Calories: ${meal.attributes.calories}</p>
-        <p>Category: ${meal.attributes.category.name}</p>
-        <button data-id=${meal.id}>edit</button>
-        <button data-id=${meal.id}>delete</button>
-        </div>
-        <br><br>`;
-        document.querySelector("#meal-container").innerHTML += mealMarkup;
+        render(meal);
       });
+      // .catch((err) => console.log(err));
     });
 }
 
@@ -50,18 +42,21 @@ function postFetch(name, ingredients, calories, image_url, category_id) {
     .then((response) => response.json())
     .then((meal) => {
       console.log(meal);
-      const mealData = meal.data.attributes;
-      // render JSON response
-      const mealMarkup = `
-      <div data-id=${meal.id}>
-        <img src=${mealData.image_url} height="200" width="250">
-        <h3>${mealData.name}</h3>
-        <p>${mealData.calories}</p>
-        <p>${mealData.category.name}</p>
-        <button data-id=${mealData.id}>edit</button>
-      </div>
-      <br><br>`;
+      const mealData = meal.data;
 
-      document.querySelector("#meal-container").innerHTML += mealMarkup;
+      render(mealData);
     });
+}
+
+function render(meal) {
+  const mealMarkup = ` <div data-id=${meal.id}>
+        <img src=${meal.attributes.image_url} height="200" width ="250">
+        <h3>Name: ${meal.attributes.name}</h3>
+        <p>Calories: ${meal.attributes.calories}</p>
+        <p>Category: ${meal.attributes.category.name}</p>
+        <button data-id=${meal.id}>edit</button>
+        <button data-id=${meal.id}>delete</button>
+        </div>
+        <br><br>`;
+  document.querySelector("#meal-container").innerHTML += mealMarkup;
 }
