@@ -6,6 +6,59 @@
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
+    <div class="form-container">
+      <form id="create-meal-form" style="">
+        <h3>Create a New Meal</h3>
+        <input
+          id="input-name"
+          type="text"
+          name="name"
+          value=""
+          placeholder="Enter your meal name..."
+          class="input-text"
+        />
+        <br /><br />
+        <textarea
+          id="input-ingridents"
+          name="ingridents"
+          rows="2"
+          cols="50"
+          value=""
+          placeholder="Enter your meal's ingridents. Please separate by commas(,)."
+        ></textarea>
+        <br /><br />
+        <textarea
+          id="input-url"
+          type="text"
+          name="image"
+          rows="1"
+          cols="50"
+          value=""
+          placeholder="Enter your meal image url"
+          class="input-text"
+        ></textarea>
+        <br /><br />
+        <p>Please select a category:</p>
+        <select id="categories" name="categories">
+          <option value="1">Breakfast</option>
+          <option value="2">Brunch</option>
+          <option value="3">Lunch</option>
+          <option value="4">Dinner</option>
+          <option value="5">Snack</option>
+        </select>
+        <br /><br />
+
+        <input
+          id="create-button"
+          type="submit"
+          name="submit"
+          value="Create New Meal"
+          class="submit"
+        />
+        <br /><br />
+      </form>
+    </div>
+
     <div id="meal-container"></div>
   </body>
 </html>
