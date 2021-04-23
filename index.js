@@ -26,5 +26,11 @@ function getMeals() {
 
 function createFormHandler(e) {
   e.preventDefault();
-  console.log(e);
+  const nameInput = document.querySelector("#input-name").value;
+  const ingridentsInput = document.querySelector("#input-ingridents").value;
+  const urlInput = document.querySelector("#input-url").value;
+  const categoryInput = parseInt(document.querySelector("#categories").value);
+  postFetch(nameInput, ingridentsInput, urlInput, categoryInput);
 }
+
+function postFetch(name, ingridents, image_url, category_id) {}
