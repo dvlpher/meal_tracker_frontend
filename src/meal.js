@@ -11,18 +11,18 @@ class Meal {
 
   renderMealCard() {
     return `
-      <div data-id=meal-${this.id}>
+      <div id=meal-${this.id}>
         <img src=${this.image_url} height="200" width="250">
         <h3>${this.name}</h3>
         <p>${this.category.name}</p></div>
-        <div id="edit-${this.id}">
+        <div id="delete-${this.id}">
         <button data-id=${this.id}>delete</button><div>
       </div>
       <br><br>`;
   }
   renderUpdateForm() {
     return `
-    <form data-id=${this.id} >
+    <form id=${this.id} >
       <h3>Edit a Meal!</h3>
   
       <label>Name</label>

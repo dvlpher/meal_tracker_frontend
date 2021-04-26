@@ -103,8 +103,9 @@ function patchMeal(meal, name, ingredients, calories, image_url, category_id) {
 }
 function deleteMeal(id) {
   //cannot figure out why in the console it returns an id for Meal.all[0]["id"] but in the .find returns undefined.
-  let meal = Meal.all.find((meals) => meals["id"] === id);
-  meal.remove();
+  let meal = Meal.all.find((meals) => meals["id"] == id);
+  let removedMeal = document.getElementById(`meal-${id}`);
+  removedMeal.remove();
   let configObj = {
     method: "DELETE",
     headers: {
