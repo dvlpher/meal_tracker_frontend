@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   //edit form
   const mealContainer = document.querySelector("#meal-container");
   mealContainer.addEventListener("click", (e) => {
-    const id = parseInt(e.target.dataset.id);
-    const meal = Meal.findById(id);
-    console.log(meal);
-    document.querySelector("#update-meal").innerHTML = meal.renderUpdateForm();
+    const mealId = parseInt(e.target.dataset.id);
+    console.log(mealId);
+    deleteMeal(mealId);
+    // console.log(Meal.all);
+    // const meal = Meal.all[mealId - 1];
+    // document.querySelector("#update-meal").innerHTML = meal.renderUpdateForm();
   });
   document
     .querySelector("#update-meal")
@@ -46,7 +48,7 @@ function createFormHandler(e) {
 function updateFormHandler(e) {
   e.preventDefault();
   const id = parseInt(e.target.dataset.id);
-  const meal = Meal.findById(id);
+  const meal = Meal.all[id - 1];
   const name = e.target.querySelector("#input-name").value;
   const ingredients = e.target.querySelector("#input-ingredients").value;
   const calories = e.target.querySelector("#input-calories").value;
@@ -87,7 +89,7 @@ function patchMeal(meal, name, ingredients, calories, image_url, category_id) {
     image_url,
     category_id,
   };
-  fetch(`http://localhost:3000/api/v1/syllabuses/${meal.id}`, {
+  fetch(`http://localhost:3000/api/v1/meals/${meal.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -96,6 +98,27 @@ function patchMeal(meal, name, ingredients, calories, image_url, category_id) {
     body: JSON.stringify(bodyJSON),
   })
     .then((res) => res.json())
-    // our backend responds with the updated syllabus instance represented as JSON
+    // our backend responds with the updated meal instance represented as JSON
     .then((updatedMeal) => console.log(updatedMeal));
+}
+function deleteMeal(id) {
+  let configObj = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  };
+
+  fetch(`http://localhost:3000/api/v1/meals/${id}`, configObj)
+    .then((res) => res.json())
+    .then((resp) => {
+      alert(resp.message);
+    });
+
+  Meal.all = Meal.all.filter((meal) => meal.id != id);
+
+  let meal = document.getElementById(`meal-${id}`);
+
+  meal.remove();
 }
