@@ -1,8 +1,22 @@
 body {
-  background-color: lightblue;
+  background-color: rgb(149, 0, 10);
 }
 
 h3 {
-  color: navy;
+  color: rgb(0, 0, 0);
   margin-left: center;
+}
+
+p {
+  color: rgb(0, 0, 0);
+  margin-left: center;
+}
+
+#meal-container {
+  background-color: tan;
+  color: black;
+  border: 1px black;
+  margin: 15px;
+  padding: 15px;
+  width: 10%;
 }

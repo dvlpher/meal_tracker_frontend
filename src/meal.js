@@ -12,9 +12,11 @@ class Meal {
   renderMealCard() {
     return `
       <div id=meal-${this.id}>
+      <h3>${this.name}</h3>
         <img src=${this.image_url} height="200" width="250">
-        <h3>${this.name}</h3>
-        <p>${this.category.name}</p></div>
+        <p>Calories: ${this.calories}</p>
+        <p>Ingredients: ${this.ingredients}</p>
+        <p>Category: ${this.category.name}</p></div>
         <div id="delete-${this.id}">
         <button data-id=${this.id}>delete</button><div>
       </div>
