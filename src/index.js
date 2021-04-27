@@ -1,4 +1,5 @@
 const endPoint = "http://localhost:3000/api/v1/meals";
+const searchBar = document.querySelector("#search-bar");
 
 document.addEventListener("DOMContentLoaded", () => {
   getMeals();
@@ -14,10 +15,41 @@ document.addEventListener("DOMContentLoaded", () => {
     // const meal = Meal.all[mealId - 1];
     // document.querySelector("#update-meal").innerHTML = meal.renderUpdateForm();
   });
-  document
-    .querySelector("#update-meal")
-    .addEventListener("submit", (e) => updateFormHandler(e));
+  // document
+  //   .querySelector("#update-meal")
+  //   .addEventListener("submit", (e) => updateFormHandler(e));
+  const searchBar = document.querySelector("#search-bar");
+  searchBar.addEventListener("keypress", loggedKey);
 });
+
+function loggedKey(e) {
+  let searchWord = document.querySelector("#search-bar").value;
+  searchWord.innerHTML += "${e.code}";
+  filterWords(searchWord);
+}
+
+function filterWords(searchWord) {
+  let returnedMeal = Meal.all.filter((meal) =>
+    meal.name.toLowerCase().includes(searchWord.toLowerCase())
+  );
+  console.log(returnedMeal);
+  const mealItems = [];
+  if (returnedMeal != []) {
+    const mealContainer = document.querySelector("#meal-container");
+    removeAllElements(mealContainer);
+    meals = returnedMeal.forEach((meal) => {
+      mealItems.push(meal.renderMealCard());
+    });
+
+    mealContainer.innerHTML += mealItems[0];
+  }
+}
+
+function removeAllElements(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
 
 function getMeals() {
   fetch(endPoint)
