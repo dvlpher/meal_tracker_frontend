@@ -45,17 +45,17 @@ function createFormHandler(e) {
   postFetch(nameInput, ingredientsInput, caloriesInput, imageInput, categoryId);
 }
 
-function updateFormHandler(e) {
-  e.preventDefault();
-  const id = parseInt(e.target.dataset.id);
-  const meal = Meal.all[id - 1];
-  const name = e.target.querySelector("#input-name").value;
-  const ingredients = e.target.querySelector("#input-ingredients").value;
-  const calories = e.target.querySelector("#input-calories").value;
-  const image_url = e.target.querySelector("#input-url").value;
-  const category_id = parseInt(e.target.querySelector("#categories").value);
-  patchMeal(meal, name, ingredients, calories, image_url, category_id);
-}
+// function updateFormHandler(e) {
+//   e.preventDefault();
+//   const id = parseInt(e.target.dataset.id);
+//   const meal = Meal.all[id - 1];
+//   const name = e.target.querySelector("#input-name").value;
+//   const ingredients = e.target.querySelector("#input-ingredients").value;
+//   const calories = e.target.querySelector("#input-calories").value;
+//   const image_url = e.target.querySelector("#input-url").value;
+//   const category_id = parseInt(e.target.querySelector("#categories").value);
+//   patchMeal(meal, name, ingredients, calories, image_url, category_id);
+// }
 
 function postFetch(name, ingredients, calories, image_url, category_id) {
   console.log(name, ingredients, calories, image_url, category_id);
@@ -80,26 +80,26 @@ function postFetch(name, ingredients, calories, image_url, category_id) {
     });
 }
 
-function patchMeal(meal, name, ingredients, calories, image_url, category_id) {
-  const bodyJSON = {
-    meal,
-    name,
-    ingredients,
-    calories,
-    image_url,
-    category_id,
-  };
-  fetch(`http://localhost:3000/api/v1/meals/${meal.id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(bodyJSON),
-  })
-    .then((res) => res.json())
-    // our backend responds with the updated meal instance represented as JSON
-    .then((updatedMeal) => console.log(updatedMeal));
+// function patchMeal(meal, name, ingredients, calories, image_url, category_id) {
+//   const bodyJSON = {
+//     meal,
+//     name,
+//     ingredients,
+//     calories,
+//     image_url,
+//     category_id,
+//   };
+//   fetch(`http://localhost:3000/api/v1/meals/${meal.id}`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//     body: JSON.stringify(bodyJSON),
+//   })
+//     .then((res) => res.json())
+//     // our backend responds with the updated meal instance represented as JSON
+//     .then((updatedMeal) => console.log(updatedMeal));
 }
 function deleteMeal(id) {
   //cannot figure out why in the console it returns an id for Meal.all[0]["id"] but in the .find returns undefined.
