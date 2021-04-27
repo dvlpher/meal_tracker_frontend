@@ -19,8 +19,7 @@ class Meal {
         <p>Category: ${this.category.name}</p></div>
         <div id="delete-${this.id}">
         <button data-id=${this.id}>delete</button><div>
-      </div>
-      <br><br>`;
+      </div>`;
   }
   // renderUpdateForm() {
   //   return `
