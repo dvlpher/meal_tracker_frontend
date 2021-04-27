@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(149, 0, 10);
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  margin-left: center;
+}
+
+h3 {
+  color: rgb(0, 0, 0);
+  margin-left: center;
+}
+
+p {
+  color: rgb(0, 0, 0);
+  margin-left: center;
+}
+
+#meal-container {
+  background-color: tan;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+  width: 10%;
+}

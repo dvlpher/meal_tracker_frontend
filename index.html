@@ -2,11 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>MEAL TRACKER</title>
+    <link rel="stylesheet" href="index.css" />
     <script type="text/javascript" src="src/index.js"></script>
     <script type="text/javascript" src="src/meal.js"></script>
+    <h1>MEAL TRACKER!</h1>
   </head>
   <body>
+    <input
+      id="search-bar"
+      type="search"
+      name="search"
+      value=""
+      class="search"
+      placeholder="SEARCH FOR A MEAL"
+    />
     <div class="form-container">
       <form id="create-meal-form" style="">
         <h3>Create a New Meal</h3>
@@ -47,8 +57,7 @@
           placeholder="Enter your meal image url"
           class="input-text"
         ></textarea>
-        <br /><br />
-        <p>Please select a category:</p>
+        <p>Please Select A Category:</p>
         <select id="categories" name="categories">
           <option value="1">Breakfast</option>
           <option value="2">Brunch</option>
