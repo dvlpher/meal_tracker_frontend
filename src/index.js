@@ -100,7 +100,7 @@ function postFetch(name, ingredients, calories, image_url, category_id) {
 //     .then((res) => res.json())
 //     // our backend responds with the updated meal instance represented as JSON
 //     .then((updatedMeal) => console.log(updatedMeal));
-}
+// }
 function deleteMeal(id) {
   //cannot figure out why in the console it returns an id for Meal.all[0]["id"] but in the .find returns undefined.
   let meal = Meal.all.find((meals) => meals["id"] == id);
