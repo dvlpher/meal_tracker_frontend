@@ -29,19 +29,20 @@ function loggedKey(e) {
 }
 
 function filterWords(searchWord) {
+  const mealItems = [];
   let returnedMeal = Meal.all.filter((meal) =>
     meal.name.toLowerCase().includes(searchWord.toLowerCase())
   );
   console.log(returnedMeal);
-  const mealItems = [];
+
   if (returnedMeal != []) {
     const mealContainer = document.querySelector("#meal-container");
     removeAllElements(mealContainer);
     meals = returnedMeal.forEach((meal) => {
       mealItems.push(meal.renderMealCard());
     });
-
-    mealContainer.innerHTML += mealItems[0];
+    allMeals = mealItems.join(" ");
+    mealContainer.innerHTML += allMeals;
   }
 }
 
